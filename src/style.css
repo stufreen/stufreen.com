@@ -1,5 +1,5 @@
 :root {
-  --blue: #3000ff;
+  --blue: #2000ff;
   --spacing-1: 0.8rem;
   --spacing-2: 1.6rem;
   --spacing-3: 2.4rem;
@@ -57,7 +57,7 @@ a:active {
 .social-link {
   width: 2rem;
   height: 2rem;
-  padding-right: var(--spacing-1);
+  margin-right: var(--spacing-1);
   display: inline-block;
   margin-top: var(--spacing-2);
 }
