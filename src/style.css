@@ -1,7 +1,17 @@
+:root {
+  --blue: #3000ff;
+  --spacing-1: 0.8rem;
+  --spacing-2: 1.6rem;
+}
+
+html {
+  background-color: white;
+}
+
 body {
   margin: 0;
   font-family: sans-serif;
-  color: #3000ff;
+  color: var(--blue);
 }
 
 .header {
@@ -9,9 +19,55 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  background-color: #eee;
   font-weight: 600;
   font-size: 2em;
   text-transform: uppercase;
-  padding: 0.8em;
+  padding: var(--spacing-2);
+}
+
+.stu-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  display: block;
+}
+
+.main-copy {
+  padding: var(--spacing-2);
+}
+
+.main-copy p:first-of-type {
+  margin-top: 0;
+}
+
+@media screen and (min-width: 480px) {
+  .main-content {
+    display: flex;
+    max-width: 60em;
+    margin: 0 auto;
+    padding: var(--spacing-2);
+  }
+
+  .stu-photo {
+    width: 13em;
+  }
+
+  .main-copy {
+    padding: 0 0 0 var(--spacing-2);
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .main-content {
+    padding: var(--spacing-2);
+  }
+
+  .main-copy {
+    padding: var(--spacing-2) 0 0 var(--spacing-2);
+    font-size: 1.1rem;
+  }
+
+  .stu-photo {
+    width: 20em;
+  }
 }
