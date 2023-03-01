@@ -35,8 +35,7 @@ a:active {
 }
 
 .header img {
-  height: 1em;
-  max-width: 100%;
+  width: 100%;
 }
 
 .stu-photo {
@@ -101,5 +100,16 @@ a:active {
 
   .stu-photo {
     width: 20em;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .main-copy {
+    padding: var(--spacing-2) 0 0 var(--spacing-2);
+    font-size: 1.3rem;
+  }
+
+  .stu-photo {
+    width: 24em;
   }
 }
