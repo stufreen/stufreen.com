@@ -24,10 +24,6 @@ const { items } = Astro.props;
     list-style-type: none;
   }
 
-  a {
-    text-decoration: none;
-  }
-
   .work-list-item {
     display: flex;
     margin-bottom: var(--spacing-2);
@@ -37,6 +33,11 @@ const { items } = Astro.props;
     width: 12em;
     margin-right: var(--spacing-2);
     box-shadow: 7px 7px 0 var(--blue);
+    transition: box-shadow 0.2s ease-in-out;
+  }
+
+  a:hover .work-item-image {
+    box-shadow: 0px 0px 0 var(--blue);
   }
 
   .work-item-heading {
@@ -45,6 +46,14 @@ const { items } = Astro.props;
 
   .work-item-copy {
     max-width: 30em;
+  }
+
+  .work-item-links {
+    display: flex;
+  }
+
+  .work-item-links span {
+    margin: 0 0.4em;
   }
 
   @media screen and (min-width: 640px) {
@@ -59,22 +68,35 @@ const { items } = Astro.props;
   <ul>
     {
       items.map((item) => {
-        const { title, description, image, url } = item;
+        const { title, description, image, url, github } = item;
         return (
-          <li>
-            <a href={url} target="_blank" class="work-list-item">
+          <li class="scroll-into-view work-list-item">
+            <a href={url} target="_blank">
               <ResponsiveImage
                 image={image}
                 alt=""
-                widths={[384]}
-                sizes="384px"
+                widths={[200, 400]}
+                sizes="12em"
                 class="work-item-image"
               />
-              <div class="work-item-copy">
-                <h3 class="work-item-heading">{title}</h3>
-                <p class="work-item-description">{description}</p>
-              </div>
             </a>
+            <div class="work-item-copy">
+              <h3 class="work-item-heading">{title}</h3>
+              <p class="work-item-description">{description}</p>
+              <p class="work-item-links">
+                <a href={url} target="_blank">
+                  Link
+                </a>
+                {github && (
+                  <>
+                    <span> | </span>
+                    <a href={github} target="_blank">
+                      Github
+                    </a>
+                  </>
+                )}
+              </p>
+            </div>
           </li>
         );
       })
