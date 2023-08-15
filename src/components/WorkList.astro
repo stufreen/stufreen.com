@@ -30,7 +30,7 @@ const { items } = Astro.props;
   }
 
   .work-item-image {
-    width: 12em;
+    width: 6em;
     margin-right: var(--spacing-2);
     box-shadow: 7px 7px 0 var(--blue);
     transition: box-shadow 0.2s ease-in-out;
@@ -45,6 +45,7 @@ const { items } = Astro.props;
   }
 
   .work-item-copy {
+    flex: 3;
     max-width: 30em;
   }
 
@@ -54,6 +55,12 @@ const { items } = Astro.props;
 
   .work-item-links span {
     margin: 0 0.4em;
+  }
+
+  @media screen and (min-width: 500px) {
+    .work-item-image {
+      width: 12em;
+    }
   }
 
   @media screen and (min-width: 640px) {
@@ -76,7 +83,7 @@ const { items } = Astro.props;
                 image={image}
                 alt=""
                 widths={[200, 400]}
-                sizes="12em"
+                sizes="(min-width: 500px) 12em, 6em"
                 class="work-item-image"
               />
             </a>
