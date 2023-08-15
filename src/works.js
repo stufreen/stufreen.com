@@ -15,7 +15,7 @@ const works = [
   {
     title: "Cover Letter Magic",
     description:
-      "AI cover letter generator powered by Chat GPT. Applies GLM to a specific task in a familiar UI. Uses CloudFlare Workers for backend functionality for a lightweight app.",
+      "AI cover letter generator powered by Chat GPT. Applies a generalized large language model to a specific task in a familiar UI. Uses CloudFlare Workers for backend functionality for a lightweight app.",
     image: clmImage,
     url: "https://cover-letter-magic.pages.dev",
     github: "https://github.com/stufreen/cover-letters-web",
