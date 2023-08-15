@@ -1,0 +1,75 @@
+---
+import ResponsiveImage from "./ResponsiveImage.astro";
+const { items } = Astro.props;
+---
+
+<style>
+  .work-list-section {
+    padding: var(--spacing-2);
+    max-width: 60rem;
+    margin: 0 auto;
+  }
+
+  .work-list-heading {
+    font-size: 2.6em;
+    margin: var(--spacing-2) 0;
+    text-decoration: underline;
+  }
+
+  ul,
+  li {
+    padding: 0;
+    margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .work-list-item {
+    display: flex;
+    margin-bottom: var(--spacing-2);
+  }
+
+  .work-item-image {
+    width: 12em;
+    margin-right: var(--spacing-2);
+    box-shadow: 7px 7px 0 var(--blue);
+  }
+
+  .work-item-heading {
+    margin-top: 0;
+  }
+
+  .work-item-copy {
+    max-width: 30em;
+  }
+</style>
+
+<section class="work-list-section">
+  <h2 class="work-list-heading">Work</h2>
+  <ul>
+    {
+      items.map((item) => {
+        const { title, description, image, url } = item;
+        return (
+          <a href={url}>
+            <li class="work-list-item">
+              <ResponsiveImage
+                image={image}
+                alt=""
+                widths={[384]}
+                sizes="384px"
+                class="work-item-image"
+              />
+              <div class="work-item-copy">
+                <h3 class="work-item-heading">{title}</h3>
+                <p class="work-item-description">{description}</p>
+              </div>
+            </li>
+          </a>
+        );
+      })
+    }
+  </ul>
+</section>
