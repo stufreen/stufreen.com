@@ -1,0 +1,54 @@
+---
+import { getImage } from "astro:assets";
+
+const { image: originalImage, alt, widths, sizes, ...rest } = Astro.props;
+
+const moreCompressedImages = await Promise.all(
+  widths.map((targetWidth) => {
+    return getImage({
+      src: originalImage,
+      format: "webp",
+      quality: 60,
+      width: targetWidth,
+    });
+  })
+);
+
+const lessCompressedImages = await Promise.all(
+  widths.map((targetWidth) => {
+    return getImage({
+      src: originalImage,
+      format: "webp",
+      quality: 80,
+      width: targetWidth,
+    });
+  })
+);
+
+const moreCompressedSrcSet = moreCompressedImages
+  .map((img) => {
+    return `${img.src} ${img.attributes.width}w`;
+  })
+  .join(", ");
+
+const lessCompressedSrcSet = lessCompressedImages
+  .map((img) => {
+    return `${img.src} ${img.attributes.width}w`;
+  })
+  .join(", ");
+---
+
+<picture>
+  <source
+    media="(min-resolution: 150dpi)"
+    srcset={moreCompressedSrcSet}
+    sizes={sizes}
+  />
+  <img
+    srcset={lessCompressedSrcSet}
+    sizes={sizes}
+    src={originalImage.src}
+    alt={alt}
+    {...rest}
+  />
+</picture>
