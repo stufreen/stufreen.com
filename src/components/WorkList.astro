@@ -1,5 +1,6 @@
 ---
 import ResponsiveImage from "./ResponsiveImage.astro";
+import workHeading from "../assets/work.svg";
 const { items } = Astro.props;
 ---
 
@@ -11,7 +12,7 @@ const { items } = Astro.props;
   }
 
   .work-list-heading {
-    font-size: 2.6em;
+    height: 1.4em;
     margin: var(--spacing-2) 0;
     text-decoration: underline;
   }
@@ -20,6 +21,7 @@ const { items } = Astro.props;
   li {
     padding: 0;
     margin: 0;
+    list-style-type: none;
   }
 
   a {
@@ -44,17 +46,23 @@ const { items } = Astro.props;
   .work-item-copy {
     max-width: 30em;
   }
+
+  @media screen and (min-width: 640px) {
+    .work-list-heading {
+      height: 2em;
+    }
+  }
 </style>
 
 <section class="work-list-section">
-  <h2 class="work-list-heading">Work</h2>
+  <img src={workHeading.src} alt="Work" class="work-list-heading" />
   <ul>
     {
       items.map((item) => {
         const { title, description, image, url } = item;
         return (
-          <a href={url}>
-            <li class="work-list-item">
+          <li>
+            <a href={url} target="_blank" class="work-list-item">
               <ResponsiveImage
                 image={image}
                 alt=""
@@ -66,8 +74,8 @@ const { items } = Astro.props;
                 <h3 class="work-item-heading">{title}</h3>
                 <p class="work-item-description">{description}</p>
               </div>
-            </li>
-          </a>
+            </a>
+          </li>
         );
       })
     }
